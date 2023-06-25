@@ -2,7 +2,7 @@
 /* Author  : Mustafa Mohammed Abdou               */
 /* Date    : 3 April , 2023                       */
 /* Version : V01                                  */
-/* Hint    : Program file of GPIO                  */
+/* Hint    : Program file of GPIO                 */
 /**************************************************/
 
 /** INCLUDE LIBRARIES **/

@@ -2,7 +2,7 @@
 /* Author  : Mustafa Mohammed Abdou               */
 /* Date    : 24 Jun , 2023                        */
 /* Version : V01                                  */
-/* Hint    : Interface file of GPIO                */
+/* Hint    : Interface file of GPIO               */
 /**************************************************/
 
 #ifndef GPIO_INTERFACE_H

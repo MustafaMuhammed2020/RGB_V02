@@ -11,6 +11,7 @@
 
 /** INCLUDE INTERFACE FILES OF LOWER LAYERS **/
 #include "../../MCAL/GPIO/GPIO_interface.h"
+#include "../../MCAL/SYSTICK/SYSTICK_interface.h"
 
 /** INCLUDE DRIVER FILES **/
 #include "LED_interface.h"
@@ -33,7 +34,7 @@ enu_led_error_status_t LED_init(uint8_t u8_a_ledport , uint8_t u8_a_ledpin)
 	
 	GPIO_enableportclk(u8_a_ledport );              /** ENABLE CLK TO PORT **/
 	
-	GPIO_enabledigital(u8_a_ledport , u8_a_ledpin); /** ENABLE DIGITALFUNCTIONALITY **/
+	GPIO_enabledigital(u8_a_ledport , u8_a_ledpin); /** ENABLE DIGITAL FUNCTIONALITY **/
 	
 	if ( enu_l_ledpin_status == GPIO_SUCCEED )
 	{
@@ -111,34 +112,37 @@ void LED_pattern1(void)
 {
 	/** LED1 ON **/
 	LED_on(REDLED_PORT , REDLED_PIN);
-	LED_off(GREENLED_PORT , GREENLED_PIN);
-	LED_off(BLUELED_PORT , BLUELED_PIN);
+	
+	SYSTIC_start_delay_ms(1000);
+	
+	LED_off(REDLED_PORT , REDLED_PIN);
+	
 }
 
 void LED_pattern2(void)
 {
 	/** LED2 ARE ON **/
-	LED_off(REDLED_PORT , REDLED_PIN);
 	LED_on(GREENLED_PORT , GREENLED_PIN);
-	LED_off(BLUELED_PORT , BLUELED_PIN);
+	
+	//SYSTIC_start_delay_ms(1000);
+	
+	//LED_off(GREENLED_PORT , GREENLED_PIN);
 
 }
 
 void LED_pattern3(void)
 {
 	/** LED3 ARE ON **/
-	LED_off(REDLED_PORT , REDLED_PIN);
-	LED_off(GREENLED_PORT , GREENLED_PIN);
 	LED_on(BLUELED_PORT , BLUELED_PIN);
+	
+	SYSTIC_start_delay_ms(1000);
+	
+	LED_off(BLUELED_PORT , BLUELED_PIN);
 }
 
 void LED_pattern4(void)
 {
-	/**
-	GPIO_setpinsvalue(GPIO_PORTF , 0x0E , 0x0E);
-	
-	 LED 1 , LED 2 , LED 3 AND LED 4 ARE ON  **/
-	
+/** ALL LEDs ARE OFF **/
 	LED_on(REDLED_PORT , REDLED_PIN);
 	LED_on(GREENLED_PORT , GREENLED_PIN);
 	LED_on(BLUELED_PORT , BLUELED_PIN);
@@ -147,7 +151,7 @@ void LED_pattern4(void)
 
 void LED_pattern5(void)
 {
-	/** LED 4 IS OFF **/
+	/** ALL LEDs ARE ON **/
 	LED_off(REDLED_PORT , REDLED_PIN);
 	LED_off(GREENLED_PORT , GREENLED_PIN);
 	LED_off(BLUELED_PORT , BLUELED_PIN);
